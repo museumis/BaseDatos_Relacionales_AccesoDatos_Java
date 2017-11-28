@@ -1,4 +1,4 @@
-package Ejemplo04_JDBC_ConsultaBD_II;
+package Ejemplo04_JDBC_ConsultaBD_II_Mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +26,7 @@ public class Main {
 	 * @param urlBD direccion donde se hospeda la base de datos
 	 * @param nombreBD nombre de la base de datos
 	 */
-	public static void consulta_JDBC_BDRelacional(String consulta, String urlBD, String nombreBD) {
+	public static void consulta_Mysql_JDBC_BDRelacional(String consulta, String urlBD, String nombreBD) {
 
 		// Carga drivers
 		try {
@@ -63,7 +63,7 @@ public class Main {
 		String nombreBD = "acadt";
 		System.out.println("-- Consulta BD con JDBC --");
 
-		consulta_JDBC_BDRelacional(consulta, urlBD, nombreBD);
+		consulta_Mysql_JDBC_BDRelacional(consulta, urlBD, nombreBD);
 	}
 
 }
