@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import BD_RELACIONALES_FULL.Bd_Relacionales_Full;
+
 /**
  * 
  * Clase para consultar una base de datos en sqlite o oracle
@@ -137,6 +139,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		Bd_Relacionales_Full.getMetadatos("mysql");
+
 		System.out.println(" - CONSULTAS -");		
 		//Consulta sqlite
 		System.out.println("\n 1.BD SQLITE");
@@ -144,6 +149,7 @@ public class Main {
 		//Consulta oracle
 		System.out.println("\n 2.BD DE ORACLE");
 		 consulta_Oracle_JDBC_BDRelacional("SELECT * FROM empleados", "localhost", "ACADT", "12345");
+
 	}//Fin del main
 
 }//Fin de la clase
