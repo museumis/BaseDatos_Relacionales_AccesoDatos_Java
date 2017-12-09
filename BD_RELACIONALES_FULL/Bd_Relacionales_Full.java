@@ -29,7 +29,8 @@ public class Bd_Relacionales_Full {
 	// ********************** CONEXIONES **************************
 	// ************************************************************
 	/**
-	 * Procedimiento para conectarse a una base de datos Oracle,Mysql,PosgressSql,Sqlite
+	 * Procedimiento para conectarse a una base de datos
+	 * Oracle,Mysql,PosgressSql,Sqlite
 	 * 
 	 * @param tipoBaseDatos a la que se desea conectar
 	 * @return objeto Connection
@@ -41,46 +42,46 @@ public class Bd_Relacionales_Full {
 		String contraseniaUser = "";
 		String nombreBD = "";
 		String urlBD = "";
-			switch (tipoBaseDatos) {
-			case "oracle": {
-				System.out.println("Se trata de una Base de Datos de Oracle.");
-				System.out.println("Introduce los siguientes datos.");
-				userBD = pedirTexto("Nombre de la base de datos: ");
-				contraseniaUser = pedirTexto("Contraseña: ");
-				urlBD = pedirTexto("Dirección de la Base de datos: ");
-				// Conexion Oracle
-				return conectarConOracle(urlBD, userBD, contraseniaUser);
-			}
-			case "sqlite": {
-				System.out.println("Se trata de una Base de Sqlite embebida en el proyecto.");
-				System.out.println("Introduce los siguientes datos.");
-				urlBD = pedirTexto("Dirección de la Base de datos: ");
-				// Conexion Sqlite
-				return conectarConSqlite(urlBD);
-			}
-			case "mysql": {
-				System.out.println("Se trata de una Base de Datos de MySql.");
-				System.out.println("Introduce los siguientes datos.");
-				nombreBD = pedirTexto("Nombre de la base de datos: ");
-				userBD = pedirTexto("Usuario de acceso: ");
-				urlBD = pedirTexto("Dirección de la Base de datos: ");
-				//Conexion Squlite
-				return conectarConMySql(urlBD, nombreBD, userBD);
-			}
-			case "posgresql": {
-				System.out.println("Se trata de una Base de PosgreSQL.");
-				System.out.println("Introduce los siguientes datos.");
-				userBD = pedirTexto("Nombre de la base de datos: ");
-				contraseniaUser = pedirTexto("Contraseña: ");
-				urlBD = pedirTexto("Dirección de la Base de datos: ");
-				// Conexion Oracle
-				return conectarConOracle(urlBD, userBD, contraseniaUser);
-			}
-			default:
-				System.out.println("El tipo de la base de datos es erróneo.");
-				break;
-			}		
-			return c;		
+		switch (tipoBaseDatos) {
+		case "oracle": {
+			System.out.println("\n~~Se trata de una Base de Datos de Oracle.~~");
+			System.out.println("Introduce los siguientes datos.");
+			userBD = pedirTexto("\t·Nombre de la base de datos: ");
+			contraseniaUser = pedirTexto("\t·Contraseña: ");
+			urlBD = pedirTexto("\t·Dirección de la Base de datos: ");
+			// Conexion Oracle
+			return conectarConOracle(urlBD, userBD, contraseniaUser);
+		}
+		case "sqlite": {
+			System.out.println("\n~~Se trata de una Base de Sqlite embebida en el proyecto.~~");
+			System.out.println("Introduce los siguientes datos.");
+			urlBD = pedirTexto("\t·Dirección de la Base de datos: ");
+			// Conexion Sqlite
+			return conectarConSqlite(urlBD);
+		}
+		case "mysql": {
+			System.out.println("\n~~Se trata de una Base de Datos de MySql.~~");
+			System.out.println("Introduce los siguientes datos.");
+			nombreBD = pedirTexto("\t·Nombre de la base de datos: ");
+			userBD = pedirTexto("\t·Usuario de acceso: ");
+			urlBD = pedirTexto("\t·Dirección de la Base de datos: ");
+			// Conexion Squlite
+			return conectarConMySql(urlBD, nombreBD, userBD);
+		}
+		case "posgresql": {
+			System.out.println("\n~~Se trata de una Base de PosgreSQL.~~");
+			System.out.println("\t·Introduce los siguientes datos.");
+			userBD = pedirTexto("\t·Nombre de la base de datos: ");
+			contraseniaUser = pedirTexto("\t·Contraseña: ");
+			urlBD = pedirTexto("\t·Dirección de la Base de datos: ");
+			// Conexion Oracle
+			return conectarConOracle(urlBD, userBD, contraseniaUser);
+		}
+		default:
+			System.out.println("**El tipo de la base de datos es erróneo.");
+			break;
+		}
+		return c;
 	}// Fin de conectar a una base de datos
 
 	/**
@@ -137,7 +138,7 @@ public class Bd_Relacionales_Full {
 	 * @param contraseniaUser contraseña de acceso
 	 * @return un objeto Connection
 	 */
-	public static Connection conectarConOracle(String urlBD,  String userBD,String contraseniaUser) {
+	public static Connection conectarConOracle(String urlBD, String userBD, String contraseniaUser) {
 		Connection c = null;
 		try {
 			// Conectar al servidor
@@ -153,24 +154,25 @@ public class Bd_Relacionales_Full {
 		}
 		return c;
 	}// Fin de conectar con Oracle
-	
+
 	/**
 	 * Conectar con una base de datos Postgresql
 	 * 
-	 * <pre><a href=http://jdbc.postgresql.org/download.html>Driver de Postgres</a></pre>
+	 * <pre>
+	 * <a href=http://jdbc.postgresql.org/download.html>Driver de Postgres</a>
+	 * </pre>
 	 * 
 	 * @param urlBD direccion ip de la BD
 	 * @param userBD usuario de acceso
 	 * @param contraseniaUser contraseña de acceso
 	 * @return un objeto Connection
 	 */
-	public static Connection conectarConPostgresql(String urlBD,  String userBD,String contraseniaUser) {
+	public static Connection conectarConPostgresql(String urlBD, String userBD, String contraseniaUser) {
 		Connection c = null;
 		try {
 			// Conectar al servidor
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager
-					.getConnection("jdbc:postgresql://" + urlBD,userBD,contraseniaUser);
+			c = DriverManager.getConnection("jdbc:postgresql://" + urlBD, userBD, contraseniaUser);
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("*Error al encontrar la base de datos.");
@@ -352,6 +354,29 @@ public class Bd_Relacionales_Full {
 			e.printStackTrace();
 		}
 	}// Fin de consultar BD de sqlite
+	
+	// ************************************************************
+	// *********************** INSERTS **************************
+	// ************************************************************
+	
+	/**
+	 * Metodo para insertar sentencia en tablas
+	 * 
+	 * @param sentenciaSql del insert que se desea insertar
+	 */
+	public static void insert(String sentenciaSql) {
+		Connection c;
+		int afectadas;
+		c = Bd_Relacionales_Full.conectarConBD(Bd_Relacionales_Full.pedirTexto("Tipo de base de datos: "));
+		try {
+			Statement st = c.createStatement();
+			afectadas = st.executeUpdate(sentenciaSql);
+			System.out.println("Columnas afectadas -> " + afectadas);
+		} catch (SQLException e) {
+			System.out.println("Error en el SQL");
+			e.printStackTrace();
+		}
+	}
 
 	// ************************************************************
 	// *********************** METADATOS **************************
@@ -380,7 +405,7 @@ public class Bd_Relacionales_Full {
 			c = conectarConBD(tipoBaseDatos);
 			// Preparativos para mostrar
 			DatabaseMetaData data = c.getMetaData();
-			r = data.getTables(null, "ACADT", null, null);
+			r = data.getTables(null, pedirTexto("Nombre de la Base de Datos: "), null, null);
 			// MOSTRAR METADATOS
 			System.out.println("\n###########################################");
 			System.out.println("*\t~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -507,11 +532,11 @@ public class Bd_Relacionales_Full {
 			System.out.println("###########################################\n");
 			// Cierre flujos
 			rBaseDatosTablas.close();
-			if(rColumnas!=null) {
-			rColumnas.close();	
+			if (rColumnas != null) {
+				rColumnas.close();
 			}
-			if(rConstraint!=null) {
-			rConstraint.close();
+			if (rConstraint != null) {
+				rConstraint.close();
 			}
 
 			c.close();
